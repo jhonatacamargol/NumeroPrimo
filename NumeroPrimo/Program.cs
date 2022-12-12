@@ -10,29 +10,26 @@ namespace NumeroPrimo
     {
         static void Main(string[] args)
         {
-            int numero = 3, divivible = 0;
-            Console.WriteLine("Digite um número máximo para imprimir os números primos!");
-            int numero_final = int.Parse(Console.ReadLine());
-            while (numero <= numero_final) 
-            {
-                for (int i = 1; i <= numero; i++)
-                {
-                    if (numero % i == 0)
-                    {
-                        divivible++;
-                    }
-                    if (divivible > 2)
-                    {
-                        break;
-                    }
-                }
-                 if (divivible==2)
-                 {
-                            Console.Write("{0},",numero);
-                 }
-                 divivible = 0;
-                numero++;
-            }
+            Console.WriteLine("Digite os numeros para serem analisados:");
+
+            Console.ReadLine().Split(',')
+                .Select(x => int.Parse(x)).ToArray()
+                .ToList()
+                .ForEach
+                     (numero =>
+                     {
+                         for (int i = 2; i <= numero; i++)
+                         {
+                             if (numero % i == 0)
+                             {
+                                 if (numero == i)
+                                     Console.WriteLine(numero);
+                                 else
+                                     break;
+                             }
+
+                         }
+                     });
 
             Console.ReadKey();
         }
